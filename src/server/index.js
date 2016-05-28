@@ -1,9 +1,12 @@
 import koa from 'koa';
+import logger from 'koa-logger';
+import serve from 'koa-static';
 
-var app = koa();
+const port = 3000;
+const app = koa();
 
-app.use(function *() {
-    this.body = 'Hello World';
-});
+app.use(logger());
+app.use(serve('public'));
 
-app.listen(3000);
+app.listen(port);
+console.log(`Listening on port ${port}`);
